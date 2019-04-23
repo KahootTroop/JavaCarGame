@@ -41,6 +41,8 @@ public class RaceCarPane extends Pane {
     }
 
     private void draw() {
+        this.getChildren().clear();
+        
         top = new Polygon();
         top.getPoints().addAll(new Double[]{
             x + 10, y - 20,
@@ -58,28 +60,22 @@ public class RaceCarPane extends Pane {
     }
 
     public void driveForward() {
-        x += 15;
+        x += 75;
         if (x > this.width) {
-            x -= 15;
+            x = this.width;
             isOver = true;
             didWin = true;
-            return;
         }
         this.draw();
-        this.getChildren().clear();
-        this.getChildren().addAll(top, body, w1, w2);
     }
 
     public void driveBackward() {
-        x -= 15;
+        x -= 75;
         if (x < 0) {
-            x += 15;
+            x = 0;
             isOver = true;
             didWin = false;
-            return;
         }
         this.draw();
-        this.getChildren().clear();
-        this.getChildren().addAll(top, body, w1, w2);
     }
 }
